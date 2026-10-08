@@ -1,8 +1,8 @@
 # Contributing to Wizarding World
 
-Thanks for the interest. This is a single-maintainer fan project at the **design-complete, not-yet-playtested** stage — meaning every contribution that puts eyeballs on the actual gameplay (playtest, balance, multiplayer sync, sprite polish, localization) is high-leverage. The maintainer has limited bandwidth; collaborators who **take ownership of an issue** are exactly what the project needs.
+Thanks for the interest. This is a single-maintainer fan project at the **release-candidate** stage: the main single-player route has been played through from the Hogwarts Letter to the Deathly Hallows ending, so the most valuable help now is wider testing (multiplayer sync, balance, fresh installs), localization proofreading and sprite polish. The maintainer has limited bandwidth; collaborators who **take ownership of an issue** are exactly what the project needs.
 
-See the **[Looking for help](README.md#looking-for-help)** section in the README for the six current collaboration tracks and their labels. Browse [open issues](https://github.com/SamSi0322/WizardingWorld/issues) or open a new one — comment "I'll take this" to claim, work on a fork, open a PR.
+See the **[Looking for help](README.md#looking-for-help)** section in the README for the current collaboration tracks and their labels. Browse [open issues](https://github.com/SamSi0322/WizardingWorld/issues) or open a new one — comment "I'll take this" to claim, work on a fork, open a PR.
 
 Pull requests are welcome — please skim the constraints below before sinking time into a large change.
 

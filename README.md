@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="icon.png" alt="Wizarding World" width="120">
+  <img src="release_assets/wizardingworld-banner-wide.png" alt="Wizarding World: pixel-art banner with Hogwarts, the Deathly Hallows symbol and a Golden Snitch" width="100%">
 </p>
 
 # Wizarding World — A Harry Potter Mod for Terraria
@@ -8,6 +8,8 @@
 [![tModLoader 1.4.4+](https://img.shields.io/badge/tModLoader-1.4.4+-blue.svg)](https://www.tmodloader.net/)
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![Status: fan project](https://img.shields.io/badge/status-unofficial%20fan%20project-orange.svg)](#license--ip-disclaimer)
+
+By **Xinyue (Lily) Feng** ([@lillly1](https://github.com/lillly1)) · [Project page](https://samsi0322.github.io/xinyue-feng/work/wizarding-world/) · [Player guide (EN)](WizardingWorld_Guide_EN.pdf) · [玩家指南 (中文)](WizardingWorld_Guide_ZH.pdf)
 
 > **Disclaimer.** This is an **unofficial fan project**. Harry Potter, Hogwarts, the wizarding-world setting, and all related names, characters, places, and indicia are trademarks of Warner Bros. Entertainment Inc., J.K. Rowling, and other rights holders. This mod is **not affiliated with, endorsed by, or sponsored by** any rights holder. Non-commercial fan use only — see [License & IP disclaimer](#license--ip-disclaimer) at the bottom.
 
@@ -33,7 +35,7 @@ A comprehensive Harry Potter Hogwarts experience mod for Terraria via tModLoader
 - 3-language support (English, Chinese Simplified, Chinese Traditional)
 - Canon-audited: true Invisibility Cloak is unique, Gaunt's Ring awakens the Resurrection Stone, Demiguise gear is ordinary stealth gear
 
-## 【new】 Release QA Summary
+## Release QA summary
 
 As of July 1, 2026, Wizarding World is treated as a **1.0.0 release candidate**. The focus is no longer adding new systems; the current scope is packaging, publishing, and wider community validation.
 
@@ -119,7 +121,7 @@ When you first use a Life Crystal or defeat a boss, an owl will deliver your **H
 | 11 | **Dementor King** | Post-Barty + Golem + night |
 | 12 | **Lord Voldemort** | Post-Dementor King + Horcrux/Battle/Cultist readiness |
 
-### Enemies (78)
+### Enemies (78; a selection)
 Dementor, Acromantula, Cornish Pixie, Mountain Troll, Inferius, Thestral, Death Eater, Mandrake, Boggart, Doxy, Werewolf, Grindylow, Peeves, Nagini (mini-boss), Obscurus, Blast-Ended Skrewt, Sphinx, Giant, Snow Wraith, Cursed Mummy, Fwooper, Merfolk, Azkaban Guard, Bowtruckle (critter), Flobberworm (critter)
 
 ### Town NPCs (16; core examples)
@@ -133,7 +135,7 @@ Dementor, Acromantula, Cornish Pixie, Mountain Troll, Inferius, Thestral, Death 
 | **Centaur** | Defeat any boss | Detection/divination items |
 | **Dumbledore** | Defeat Dementor King | Hallows guidance, later endgame items |
 
-### Accessories (53)
+### Accessories (65; highlights)
 - **Deathly Hallows**: true Invisibility Cloak, Resurrection Stone, Elder Wand
 - **Stealth Gear**: Demiguise Weave Cloak, Camouflage Cloak, Stealth Draught
 - **Horcruxes**: Riddle's Diary, Slytherin's Locket, Hufflepuff's Cup, Diadem of Ravenclaw
@@ -154,6 +156,7 @@ Dementor, Acromantula, Cornish Pixie, Mountain Troll, Inferius, Thestral, Death 
 | Dark Wizard | Spell Power | +25% spell damage, +15% spell crit |
 | Dragon Scale | Hardmode Spell | Fire/lava immunity, +18% spell damage |
 | Wizard Robes | Vanity | Classic wizard aesthetic |
+| Wizengamot | Endgame Spell | Arcane Authority: +30% spell damage, −20% mana cost, +60 mana, +8 mana regen |
 
 ### Mounts & Pets
 - **Mounts**: Nimbus 2000 → Firebolt → Hippogriff → Nimbus 2001 (all flying, clear upgrade path)
@@ -195,16 +198,17 @@ The included in-game sprites are complete and release-checked. Asset coverage is
 
 ## Credits
 
+- **Project lead**: Xinyue (Lily) Feng ([@lillly1](https://github.com/lillly1))
 - **Mod Development**: Built with Claude Code (Anthropic)
 - **Game**: Terraria by Re-Logic
 - **Modding Framework**: tModLoader
 - **Inspiration**: J.K. Rowling's Harry Potter series, Fantastic Beasts
 
-## 【new】 Looking for help
+## Looking for help
 
 This mod is in release-candidate shape. The core content pass is complete: in-game assets are present, release packaging is ready, debug-only QA tools are excluded from public Release builds, and the primary single-player route has been tested from early game through all 12 bosses, Voldemort, and the Deathly Hallows ending.
 
-The remaining help wanted is focused on wider release confidence rather than adding more content. If any of these match what you'd like to work on, browse [open issues](https://github.com/lillly1/WizardingWorld/issues) or open a new one. See [CONTRIBUTING.md](CONTRIBUTING.md) for build setup.
+The remaining help wanted is focused on wider release confidence rather than adding more content. If any of these match what you'd like to work on, browse [open issues](https://github.com/SamSi0322/WizardingWorld/issues) or open a new one. See [CONTRIBUTING.md](CONTRIBUTING.md) for build setup.
 
 Already completed:
 
@@ -228,7 +232,7 @@ Issues are tagged with the labels above. The maintainer has limited bandwidth, s
 
 - **Take ownership** — comment "I'll take this" on an issue, work on a fork, open a PR.
 - **Small first PR** — a single sprite polish, a typo fix, a balance tweak with rationale. Big rewrites need an issue first.
-- **Discussions** — design questions / ideas / "should we do X?" go in [GitHub Discussions](https://github.com/lillly1/WizardingWorld/discussions), not issues.
+- **Discussions** — design questions / ideas / "should we do X?" go in [GitHub Discussions](https://github.com/SamSi0322/WizardingWorld/discussions), not issues.
 
 ## License & IP disclaimer
 

@@ -1,15 +1,15 @@
 # AGENTS.md
 
-This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
+This file provides guidance to Codex and other AI coding agents when working with code in this repository.
 
 ## Project Overview
 
-This is **Wizarding World**, a Harry Potter-themed content mod for Terraria via tModLoader 1.4.4+. It is a large-scale mod (~443 C# files, 12 bosses, 51 enemies, 23 wands, 53 accessories, 10 custom systems) with three-language localization (English, Simplified Chinese, Traditional Chinese).
+This is **Wizarding World**, a Harry Potter-themed content mod for Terraria via tModLoader 1.4.4+. It is a large-scale mod (593 C# files, 12 bosses, 78 enemies, 24 active wands, 65 accessories; `release_manifest.json` has the current counts) with three-language localization (English, Simplified Chinese, Traditional Chinese).
 
 ## Build & Run
 
 ```bash
-# Build (requires tModLoader + .NET 6+ SDK)
+# Build (requires tModLoader + .NET 8 SDK)
 dotnet build
 
 # Launch client (uses tModLoader steam path)
@@ -58,7 +58,7 @@ WizardingWorld/
 │   ├── Buffs/Debuffs/     # PetrifiedDebuff, JinxedDebuff, DarkCurseDebuff
 │   ├── DamageClasses/     # SpellDamage (custom damage class, inherits Generic)
 │   ├── Items/
-│   │   ├── Accessories/   # 53 accessories including Deathly Hallows and Horcruxes
+│   │   ├── Accessories/   # 65 accessories including Deathly Hallows and Horcruxes
 │   │   ├── Armor/[House]/ # 8 armor sets (3 pieces each)
 │   │   ├── BossLoot/[Boss]/ # Per-boss loot (Bag, Trophy, Expert item)
 │   │   ├── Consumables/   # Potions/, summon items, crafting materials
@@ -68,7 +68,7 @@ WizardingWorld/
 │   ├── Mounts/            # 5 mounts (Nimbus, Firebolt, Hippogriff, Thestral, Nimbus 2001)
 │   ├── NPCs/
 │   │   ├── Bosses/[Boss]/ # 12 bosses, each in own folder
-│   │   ├── Enemies/       # 51 enemies
+│   │   ├── Enemies/       # 78 enemies
 │   │   └── Town/          # 7 town NPCs
 │   ├── Pets/[Pet]/        # 6 pets (3 files each: Item, Projectile, Buff)
 │   ├── Projectiles/Spells/ # 26 spell projectiles
