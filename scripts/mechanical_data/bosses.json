@@ -483,9 +483,9 @@
   {
     "id": "TrollBoss",
     "_source": "TrollBoss.cs",
-    "damage": 30,
-    "defense": 8,
-    "lifeMax": 2000,
+    "damage": 22,
+    "defense": 6,
+    "lifeMax": 1500,
     "knockBackResist": 0.0,
     "isBoss": true,
     "noGravity": true,

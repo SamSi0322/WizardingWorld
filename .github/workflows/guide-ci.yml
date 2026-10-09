@@ -6,33 +6,42 @@ on:
     paths:
       - 'Content/**'
       - 'Common/**'
+      - 'Localization/**'
       - 'scripts/**'
       - 'schemas/**'
+      - 'tools/fonts/**'
       - 'generate_english_pdf.py'
       - 'generate_chinese_pdf.py'
+      - '.github/workflows/guide-ci.yml'
   pull_request:
     paths:
       - 'Content/**'
       - 'Common/**'
+      - 'Localization/**'
       - 'scripts/**'
       - 'schemas/**'
+      - 'tools/fonts/**'
       - 'generate_english_pdf.py'
       - 'generate_chinese_pdf.py'
+      - '.github/workflows/guide-ci.yml'
   workflow_dispatch:
 
 jobs:
   verify-and-generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install fpdf2
+        run: |
+          pip install fpdf2 jsonschema
+          # A Chinese font for the Chinese guide (found automatically by scripts/guide_layout.py)
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk
 
       # Layer A: Auto-derived counts
       - name: Scan content
@@ -42,11 +51,11 @@ jobs:
       - name: Export mechanical data
         run: python scripts/export_mechanical_data.py
 
-      # Layer B: Curated narrative content
-      - name: Export guide content
-        run: python scripts/export_guide_data.py
+      # Layer B: Curated narrative content (scripts/guide_content.json is edited by hand)
+      - name: Check guide content structure
+        run: python scripts/export_guide_data.py --check
 
-      # Layer C: Strict verification (48 checks -- fails pipeline on drift)
+      # Layer C: Strict verification (fails the pipeline on drift)
       - name: Verify guide consistency
         run: python scripts/verify_guide.py --strict
 
@@ -55,7 +64,6 @@ jobs:
         run: python generate_english_pdf.py
 
       - name: Generate Chinese PDF
-        continue-on-error: true
         run: python generate_chinese_pdf.py
 
       # Generate release manifest
@@ -70,9 +78,10 @@ jobs:
               'timestamp': datetime.datetime.utcnow().isoformat() + 'Z',
               'commit': '${{ github.sha }}',
               'counts': manifest['summary'],
-              'verification': '48 checks passed',
+              'verification': 'scripts/verify_guide.py --strict passed',
               'artifacts': [
                   'WizardingWorld_Guide_EN.pdf',
+                  'WizardingWorld_Guide_ZH.pdf',
                   'scripts/content_manifest.json',
                   'scripts/guide_content.json',
                   'scripts/mechanical_data/',
@@ -85,11 +94,12 @@ jobs:
 
       # Upload all truth artifacts
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: guide-artifacts
           path: |
             WizardingWorld_Guide_EN.pdf
+            WizardingWorld_Guide_ZH.pdf
             release_manifest.json
             scripts/content_manifest.json
             scripts/guide_content.json
@@ -102,4 +112,4 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           python scripts/scan_content.py --check >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Verification: **48 checks passed**" >> $GITHUB_STEP_SUMMARY
+          python scripts/verify_guide.py --strict | grep -E "^Results:" >> $GITHUB_STEP_SUMMARY

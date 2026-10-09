@@ -218,6 +218,19 @@
       "isAccessory": false
     },
     {
+      "id": "QATestWand",
+      "_source": "QATestWand.cs",
+      "damage": 600,
+      "useTime": 8,
+      "mana": 0,
+      "knockBack": 8.0,
+      "crit": 100,
+      "rarity": "Purple",
+      "obsolete": false,
+      "hasRecipe": false,
+      "isAccessory": false
+    },
+    {
       "id": "RedOakWand",
       "_source": "RedOakWand.cs",
       "damage": 32,
@@ -2075,9 +2088,9 @@
     {
       "id": "TrollBoss",
       "_source": "TrollBoss.cs",
-      "damage": 30,
-      "defense": 8,
-      "lifeMax": 2000,
+      "damage": 22,
+      "defense": 6,
+      "lifeMax": 1500,
       "knockBackResist": 0.0,
       "isBoss": true,
       "noGravity": true,

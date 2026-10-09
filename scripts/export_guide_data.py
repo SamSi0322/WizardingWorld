@@ -13,9 +13,14 @@ IMPORTANT: This is manually maintained content, NOT auto-derived from code.
 When you change game content, update this file to match.
 The verification script checks for common stale patterns.
 
+NOTE (2026): scripts/guide_content.json is now edited directly and is newer than the
+snapshot below, which is kept only for reference. The script therefore refuses to
+overwrite the JSON unless --force is given, and --check validates the JSON itself.
+
 Usage:
-    python scripts/export_guide_data.py            # write guide_content.json
-    python scripts/export_guide_data.py --check     # validate structure only
+    python scripts/export_guide_data.py --check     # validate guide_content.json's structure
+    python scripts/export_guide_data.py --output x  # write the old snapshot elsewhere
+    python scripts/export_guide_data.py --force     # overwrite guide_content.json with it
 """
 
 import argparse
@@ -701,11 +706,20 @@ def build_guide_content() -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Export guide content data")
-    parser.add_argument("--check", action="store_true", help="Validate structure only")
+    parser.add_argument("--check", action="store_true", help="Validate guide_content.json's structure")
     parser.add_argument("--output", type=str, default=None, help="Output file path")
+    parser.add_argument("--force", action="store_true",
+                        help="Overwrite guide_content.json with this script's older snapshot")
     args = parser.parse_args()
 
-    content = build_guide_content()
+    root = find_repo_root()
+    json_path = root / "scripts" / "guide_content.json"
+
+    if args.check:
+        with open(json_path, encoding="utf-8") as f:
+            content = json.load(f)
+    else:
+        content = build_guide_content()
 
     if args.check:
         # Structural validation
@@ -737,8 +751,11 @@ def main():
             print("Structure OK")
         return
 
-    root = find_repo_root()
-    output_path = args.output or str(root / "scripts" / "guide_content.json")
+    if not args.output and json_path.exists() and not args.force:
+        sys.exit("guide_content.json is edited by hand now and is newer than this script's snapshot.\n"
+                 "Not overwriting it. Use --check to validate it, --output to write the snapshot elsewhere,\n"
+                 "or --force to replace the JSON with the old snapshot.")
+    output_path = args.output or str(json_path)
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(content, f, indent=2, ensure_ascii=False)
 

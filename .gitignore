@@ -64,3 +64,6 @@ desktop.ini
 *.bak
 .env
 .env.local
+
+# Guide build cache (processed images)
+scripts/.guide_cache/

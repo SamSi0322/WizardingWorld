@@ -2,17 +2,58 @@
   "_meta": {
     "generator": "scripts/export_guide_data.py",
     "type": "curated",
-    "description": "Manually maintained guide content. Update this file when game content changes. Verification checks for common stale patterns."
+    "description": "Manually maintained guide content: the single source for both player guides' narrative text and curated tables. Update this file when game content changes; scripts/verify_guide.py checks it against the code."
   },
   "getting_started": {
     "hogwarts_letter": "When you first reach 120 max HP (after using a Life Crystal) or defeat an early boss, an owl immediately delivers a Hogwarts Acceptance Letter. This grants a free Oak Wand and a short starter path for the mod.",
     "enchanting_table": "The Enchanting Table is the mod's core crafting station. Nearly every wand, armor piece, potion, accessory, and boss summon uses it. Craft it early at a Work Bench from wood, Fallen Stars, torches, and either amethyst or stone; dungeon books are no longer required.",
     "wizard_tower": "A small Wizard Tower generates on the surface during world creation. It contains a chest with starter wizard loot: a wand, potions, Essence of Magic, Fallen Stars, and an Enchanting Table. Only one spawns per world.",
     "spell_damage": "The mod adds a custom damage class: Spell Damage. All wands deal Spell Damage. Armor, accessories, and buffs that boost spell damage are clearly labeled. Spell Damage benefits from generic damage bonuses but has its own modifiers.",
-    "forbidden_forest": "A custom biome that replaces normal forest spawns with magical creatures. Spawn diversity increases as more wizard bosses are defeated. The biome has increased spawn rates and drops exclusive materials like Unicorn Blood."
+    "forbidden_forest": "A custom biome that replaces normal forest spawns with magical creatures. Spawn diversity increases as more wizard bosses are defeated. The biome has increased spawn rates and drops exclusive materials like Unicorn Blood.",
+    "welcome": "Wizarding World turns Terraria into a Harry Potter adventure. You start as a first-year with a single wand and follow a guided route through 12 boss fights, a Horcrux hunt and the Battle of Hogwarts to Lord Voldemort, then claim the Deathly Hallows in a short epilogue. Along the way the mod adds wands and spells, house armor, magical creatures, town NPCs from the books, potions, events and a three-zone Forbidden Forest.",
+    "how_to_use": "Chapters 1 and 2 are a walkthrough: what to do first and the order the bosses unlock in. The rest of the guide is reference you can dip into: every boss, wand, armor set, accessory, potion, mount, pet, enemy and system, with the numbers taken from the mod's source code.",
+    "install": [
+      "Install tModLoader from Steam (it is a free DLC for Terraria) and the .NET 8 SDK.",
+      "Copy the WizardingWorld folder into Documents/My Games/Terraria/tModLoader/ModSources.",
+      "Start tModLoader and open Workshop > Develop Mods, then choose Build + Reload.",
+      "Enable Wizarding World in the Mods menu and create a new character and world."
+    ],
+    "install_note": "The mod is a release candidate and is not on the Steam Workshop yet, so for now it is built from source as above. Requires tModLoader 1.4.4 or later.",
+    "first_steps": [
+      "Use a Life Crystal (120 max HP) or beat your first boss: an owl delivers your Hogwarts Letter and a free Oak Wand.",
+      "Craft an Enchanting Table at a Work Bench from 20 wood, 5 Fallen Stars, 2 Amethyst and 5 Torches (no amethyst? 25 Stone works too, with a little more wood, stars and torches). Almost every wand, potion, armor piece and boss summon is made there.",
+      "Look for the Wizard Tower on the surface; its chest holds starter wizard loot.",
+      "Build a house for Ollivander, the wandmaker, who moves in once you own a wand.",
+      "Collect Essence of Magic from magical creatures. It is the mod's universal crafting material.",
+      "Summon the Mountain Troll with a Smelly Sock (1 Silk + 1 Fallen Star) when you feel ready."
+    ],
+    "helpers": "Two items keep you on track: the Boss Compass shows which boss is next and what it needs, and the Wizard's Almanac summarizes your progress through the route. Check them whenever you are unsure where to go.",
+    "settings": [
+      [
+        "Enemy Spawn Multiplier",
+        "0.1x to 5.0x"
+      ],
+      [
+        "Boss Health Multiplier",
+        "0.5x to 5.0x"
+      ],
+      [
+        "Spell Damage Multiplier",
+        "0.5x to 3.0x"
+      ],
+      [
+        "Death Eater Invasion Chance",
+        "0x to 5.0x"
+      ],
+      [
+        "Essence Drop Multiplier",
+        "0.5x to 5.0x"
+      ]
+    ],
+    "settings_note": "Change these under Settings > Mod Configuration > Wizarding World."
   },
   "wands": {
-    "intro": "Wands are the primary weapons of the Wizarding World mod. All deal Spell Damage and require mana to cast. They are organized into tiers matching Terraria progression.",
+    "intro": "Wands are the mod's main weapons. All of them deal Spell Damage and cost mana, and each casts a signature spell. They are grouped below by when you can make them.",
     "headers": [
       "Wand",
       "Spell",
@@ -330,13 +371,14 @@
         ]
       }
     },
-    "upgrade_note": "* The Elder Wand drops from Voldemort. The Infernal Phoenix Wand is an upgrade of the Phoenix Feather Wand. The formerly separate Shadow Elder Wand and Wand of Destiny upgrade items have been retired into the Wand Mastery system. 'Wand of Destiny' persists only as Elder Wand mastery flavor."
+    "upgrade_note": "* The Elder Wand drops from Voldemort. The Infernal Phoenix Wand is an upgrade of the Phoenix Feather Wand. The formerly separate Shadow Elder Wand and Wand of Destiny upgrade items have been retired into the Wand Mastery system. 'Wand of Destiny' persists only as Elder Wand mastery flavor.",
+    "utility_note": "Not in the tables: the Alohomora Key (shown in game as Alohomora Wand), a lockpick-style utility item that casts Alohomora and has no combat role."
   },
   "bosses": {
-    "intro": "The mod adds 12 bosses spanning Pre-Hardmode through endgame. Each has multiple phases, unique mechanics, and exclusive drops.",
+    "intro": "Twelve bosses span the whole game, from a troll in the dungeon to the Dark Lord. Each is summoned with its own item, made at the Enchanting Table, and can only be summoned once its requirement is met. Every boss has several phases and exclusive drops; Expert mode adds a treasure bag item.",
     "overview_headers": [
       "Boss",
-      "Tier",
+      "Stage",
       "HP",
       "Dmg",
       "Def"
@@ -351,93 +393,99 @@
     "list": [
       {
         "name": "Mountain Troll",
-        "tier": "Pre-Eye of Cthulhu",
-        "hp": "2,000",
-        "dmg": "30",
-        "def": "8",
+        "tier": "Pre-Hardmode",
+        "hp": "1,500",
+        "dmg": "22",
+        "def": "6",
         "phases": "P1: Walks slowly, club swings, shockwave stomps. P2 (<50%): Enraged, faster, throws rocks.",
         "drops": "Troll Hide, Troll Club, Enchanted Troll Club",
-        "expert": "Troll Hide (+8 def, +10% KB resist)"
+        "expert": "Troll Hide (+8 def, +10% KB resist)",
+        "id": "TrollBoss",
+        "requirement": "No requirement: summon it whenever you are ready."
       },
       {
         "name": "Professor Quirrell",
-        "tier": "Post-Troll + Post-Eye of Cthulhu",
+        "tier": "Pre-Hardmode",
         "hp": "3,500",
         "dmg": "35",
         "def": "12",
         "phases": "P1 (Quirrell): Nervous, weak bolts. P2 (<60%, Voldemort reveals): Flies, green curses. P3 (<25%): Teleports, ring of projectiles.",
         "drops": "Quirrell's Turban, spell components",
-        "expert": "Quirrell's Turban (+5% spell dmg, detect creatures)"
+        "expert": "Quirrell's Turban (+5% spell dmg, detect creatures)",
+        "id": "QuirrellBoss",
+        "requirement": "After the Mountain Troll and the Eye of Cthulhu."
       },
       {
         "name": "Basilisk",
-        "tier": "Pre-Hardmode (Post-Quirrell + Post-Skeletron)",
+        "tier": "Pre-Hardmode",
         "hp": "4,500",
         "dmg": "40",
         "def": "16",
         "phases": "P1: Burrows underground, lunges. P2 (<50%): Fast charges + petrification gaze.",
         "drops": "Basilisk Fang, Sword of Gryffindor, Basilisk Eye",
-        "expert": "Basilisk Eye (petrification gaze)"
+        "expert": "Basilisk Eye (petrification gaze)",
+        "id": "BasiliskBoss",
+        "requirement": "After Professor Quirrell and Skeletron. The last pre-Hardmode boss."
       },
       {
         "name": "Aragog",
-        "tier": "Early Hardmode",
+        "tier": "Hardmode",
         "hp": "8,000",
         "dmg": "45",
         "def": "18",
         "phases": "P1: Crawls toward player, spawns Acromantula minions. P2 (<40%): Web spit, faster, more spiders.",
         "drops": "Aragog's Fang, Spider Silk Weave",
-        "expert": "Aragog's Fang (summon Acromantula minions)"
+        "expert": "Aragog's Fang (summon Acromantula minions)",
+        "id": "AragogBoss",
+        "requirement": "Any time in Hardmode."
       },
       {
         "name": "Fluffy",
-        "tier": "Post-Mechanical Bosses",
+        "tier": "Hardmode",
         "hp": "18,000",
         "dmg": "60",
         "def": "25",
         "phases": "P1: 3 cycling attacks (bite, pounce, bark shockwave). P2 (<50%): All heads attack, Jinxed on howl. P3 (<20%): Continuous charging + boulder barrage + pushback shockwaves. Music is its thematic weakness.",
         "drops": "Three-Headed Collar, Cerberus Fang",
-        "expert": "Three-Headed Collar (+5 def, +3 max minions)"
+        "expert": "Three-Headed Collar (+5 def, +3 max minions)",
+        "id": "FluffyBoss",
+        "requirement": "After any Mechanical Boss."
       },
       {
         "name": "Hungarian Horntail",
-        "tier": "Mid Hardmode",
+        "tier": "Hardmode",
         "hp": "28,000",
         "dmg": "70",
         "def": "30",
         "phases": "P1: Flies, shoots fireballs. P2 (<55%): Enraged charges, tail swipe, fire breath. P3 (<25%): Rapid attacks, fire rain.",
         "drops": "Dragon Heart, Dragon Scale (x8+)",
-        "expert": "Dragon Heart (fire/lava immune, +12% spell dmg)"
-      },
-      {
-        "name": "Fenrir Greyback",
-        "tier": "Blood Moon Boss",
-        "hp": "25,000",
-        "dmg": "75",
-        "def": "22",
-        "phases": "P1: Fast charges, claw swipes, Bleeding. P2 (<50%): Full werewolf, howl spawns Werewolves. P3 (<20%): Berserk.",
-        "drops": "Lycan's Bite Mark, Werewolf Pelt",
-        "expert": "Lycan's Bite Mark (+20% melee, +15% night speed)"
+        "expert": "Dragon Heart (fire/lava immune, +12% spell dmg)",
+        "id": "HorntailBoss",
+        "requirement": "After any Mechanical Boss."
       },
       {
         "name": "Dolores Umbridge",
-        "tier": "Post-Mech Bosses",
+        "tier": "Hardmode",
         "hp": "20,000",
         "dmg": "40",
         "def": "35",
         "phases": "P1: Hovers, Educational Decree (Jinxed). P2 (<50%): Petrified on contact, summons swords. P3 (<20%): Panic, rapid teleport.",
         "drops": "Ministry Badge, Umbridge's Quill",
-        "expert": "Ministry Badge (immune Jinxed/Confused, +5 def)"
+        "expert": "Ministry Badge (immune Jinxed/Confused, +5 def)",
+        "id": "UmbridgeBoss",
+        "requirement": "After the Hungarian Horntail and a Mechanical Boss."
       },
       {
-        "name": "Barty Crouch Jr",
-        "tier": "Post-Plantera",
-        "hp": "30,000",
-        "dmg": "65",
-        "def": "28",
-        "phases": "P1 (Moody disguise): Walks, bolts, heals. P2 (<70%, true form): Flies, rapid dark curses. P3 (<30%): Teleports, Death Eater minions.",
-        "drops": "Polyjuice Flask",
-        "expert": "Polyjuice Flask (+12% all dmg, +10% speed)"
+        "name": "Fenrir Greyback",
+        "tier": "Hardmode",
+        "hp": "25,000",
+        "dmg": "75",
+        "def": "22",
+        "phases": "P1: Fast charges, claw swipes, Bleeding. P2 (<50%): Full werewolf, howl spawns Werewolves. P3 (<20%): Berserk.",
+        "drops": "Lycan's Bite Mark, Werewolf Pelt",
+        "expert": "Lycan's Bite Mark (+20% melee, +15% night speed)",
+        "id": "FenrirBoss",
+        "requirement": "After Dolores Umbridge, during a Blood Moon."
       },
       {
         "name": "Bellatrix Lestrange",
@@ -447,17 +495,33 @@
         "def": "30",
         "phases": "P1: Hovers, Crucio/Stupefy, teleports. P2 (<60%): +Fiendfyre, faster teleport. P3 (<25%): Rapid-fire, 2 Death Eaters.",
         "drops": "Bellatrix's Wand Hand, Blackthorn Wand",
-        "expert": "Bellatrix's Wand Hand (+20% spell dmg, -15% mana cost)"
+        "expert": "Bellatrix's Wand Hand (+20% spell dmg, -15% mana cost)",
+        "id": "BellatrixBoss",
+        "requirement": "After Fenrir Greyback and Plantera."
+      },
+      {
+        "name": "Barty Crouch Jr",
+        "tier": "Post-Plantera",
+        "hp": "30,000",
+        "dmg": "65",
+        "def": "28",
+        "phases": "P1 (Moody disguise): Walks, bolts, heals. P2 (<70%, true form): Flies, rapid dark curses. P3 (<30%): Teleports, Death Eater minions.",
+        "drops": "Polyjuice Flask",
+        "expert": "Polyjuice Flask (+12% all dmg, +10% speed)",
+        "id": "BartyCrouchBoss",
+        "requirement": "After Bellatrix Lestrange and Plantera."
       },
       {
         "name": "Dementor King",
-        "tier": "Post-Golem (Penultimate Boss)",
+        "tier": "Post-Golem (penultimate boss)",
         "hp": "45,000",
         "dmg": "85",
         "def": "35",
         "phases": "P1: Hovers, dark energy waves, spawns Dementors. P2 (<60%): 'The Kiss' beam drains HP. P3 (<25%): 'Soul Harvest' dark vortex, pull effect. Patronus active = +30% dmg to this boss.",
         "drops": "Soul Siphon, Dementor's Shroud",
-        "expert": "Soul Siphon (3% life steal, enemies -5 def near you)"
+        "expert": "Soul Siphon (3% life steal, enemies -5 def near you)",
+        "id": "DementorKingBoss",
+        "requirement": "After Barty Crouch Jr and Golem, at night."
       },
       {
         "name": "Lord Voldemort",
@@ -467,101 +531,121 @@
         "def": "40",
         "phases": "P1: Teleports, killing curses. P2 (<55%): Death Eater minions, rapid barrage. P3 (<20%): Desperate fury, Horcrux shields, 12-bolt ring AoE. Weakened by Horcrux Hunt (100% -> 40% power).",
         "drops": "Elder Wand (100%), Gaunt's Ring (100%), Soul Fragment (Expert)",
-        "expert": "Soul Fragment (+20% all dmg, +100 mana, +5% life steal, -20% max HP)"
+        "expert": "Soul Fragment (+20% all dmg, +100 mana, +5% life steal, -20% max HP)",
+        "id": "VoldemortBoss",
+        "requirement": "After the Lunatic Cultist, at night."
       }
     ]
   },
   "town_npcs": {
-    "intro": "Sixteen town NPCs move in as you progress through the mod. Together they cover wandcraft, beasts, potions, travel, healing, resistance support, and late-game wizard services.",
+    "intro": "Sixteen town NPCs move in as you progress. Together they sell wands, beasts, potions, travel, healing and late-game wizard services, and several of them start the mod's quest lines.",
     "headers": [
       "NPC",
-      "Shop Type",
-      "Description"
+      "Shop",
+      "Moves in",
+      "What they offer"
     ],
     "col_widths": [
       30,
-      30,
-      130
+      26,
+      50,
+      84
     ],
     "rows": [
       [
         "Ollivander",
         "Wand Shop",
+        "Once anyone holds a wand, or 3+ town NPCs",
         "Sells starter wands, spell components, the Standard Book of Spells, and staged wand upgrades as bosses fall."
       ],
       [
         "Hagrid",
         "Creature Shop",
-        "Moves in after the Mountain Troll or a larger town forms. Sells creature items, pets, and staged boss summons without skipping the intended order."
+        "After the Mountain Troll or the Basilisk, or 5+ town NPCs",
+        "Sells creature items, pets and boss summons, staged so you cannot skip ahead in the route."
       ],
       [
         "Dobby",
         "Utility Shop",
+        "After the Basilisk, or 6+ town NPCs",
         "Free house-elf. Sells utility items and socks. Loyal helper."
       ],
       [
         "Potions Master",
         "Potion Shop",
+        "4+ town NPCs",
         "Sells potion ingredients and pre-brewed potions."
       ],
       [
         "Fred and George",
         "Joke/Combat Shop",
+        "After the Basilisk",
         "Weasleys' Wizard Wheezes. Sells pranks and combat consumables."
       ],
       [
         "Dumbledore",
         "Endgame Shop + Hallows Guide",
-        "Appears after defeating Voldemort. Hallows questline hub."
+        "After the Dementor King",
+        "Hub of the Deathly Hallows questline; sells endgame items."
       ],
       [
         "Centaur",
         "Nature Shop",
+        "After the Eye of Cthulhu, Skeletron or the Eater of Worlds / Brain of Cthulhu",
         "Forest-dwelling NPC. Sells nature and stargazing items."
       ],
       [
         "Madam Rosmerta",
         "Hospitality / Owl Post",
+        "After the Basilisk",
         "Runs the Hogsmeade tavern, handles Owl Post, and anchors village-side errands."
       ],
       [
         "Madam Hooch",
         "Quidditch Shop",
+        "After the Basilisk",
         "Provides Quidditch supplies, broom support items, and match-focused utility gear."
       ],
       [
         "Kingsley Shacklebolt",
         "Order / Ministry Shop",
+        "After Bellatrix Lestrange",
         "Supplies Order-aligned mission gear for Ministry and resistance operations."
       ],
       [
         "Remus Lupin",
         "Defense / Moonward Shop",
+        "After Fenrir Greyback",
         "Offers defensive tools and moonward support tied to the Whomping Willow and Shrieking Shack loop."
       ],
       [
         "Aberforth Dumbledore",
         "Resistance Supply Shop",
+        "After the Dementor King",
         "Backroom resistance contact supporting D.A. operations and Battle of Hogwarts preparation."
       ],
       [
         "Neville Longbottom",
         "Herbology / Resistance Shop",
+        "After your first Battle of Hogwarts victory",
         "Provides plant-based combat gear and support items as Hogwarts resistance escalates."
       ],
       [
         "Goblin Teller",
         "Vault Services",
+        "After the Basilisk",
         "Handles Gringotts access, vault progression, and goblin financial services."
       ],
       [
         "Mr Borgin",
         "Dark Curio Shop",
+        "Once Knockturn Alley is unlocked",
         "Runs Borgin and Burkes in Knockturn Alley with cursed wares and dark appraisal goods."
       ],
       [
         "Healer",
         "Medical Shop",
+        "Once St Mungo's is unlocked (after the Hungarian Horntail)",
         "Offers restorative supplies and medical support tied to St Mungo's treatment and triage progression."
       ]
     ]
@@ -581,7 +665,7 @@
     },
     {
       "name": "Triwizard Tournament",
-      "text": "A champion event centered on the Goblet of Fire. The guide treats it as a Hogwarts, Durmstrang, and Beauxbatons competition with champion selection, task progression, lake-rescue sequences, and tournament rewards."
+      "text": "A champion event centered on the Goblet of Fire. It runs as a Hogwarts, Durmstrang and Beauxbatons competition with champion selection, task progression, lake-rescue sequences, and tournament rewards."
     },
     {
       "name": "House Renown System",
@@ -659,104 +743,104 @@
     ]
   },
   "boss_progression": {
-    "intro": "Recommended order for fighting bosses, aligned with Terraria's natural progression:",
+    "intro": "The order the summon items allow, from the first night to the final battle. A boss cannot be summoned until its requirement is met, so this is also the order you will meet them in.",
     "headers": [
       "#",
       "Boss",
       "HP",
-      "Tier",
+      "Requirement",
       "Notes"
     ],
     "col_widths": [
-      8,
-      32,
-      22,
-      36,
-      92
+      7,
+      34,
+      16,
+      60,
+      63
     ],
     "rows": [
       [
         "1",
         "Mountain Troll",
-        "2,000 HP",
-        "Pre-Eye of Cthulhu",
-        "First boss. Gear: Oak/Willow/Alder Wand + Wizard Robes."
+        "1,500",
+        "No requirement",
+        "First boss. Any starter wand will do."
       ],
       [
         "2",
         "Professor Quirrell",
-        "3,500 HP",
-        "Post-Troll + Post-Eye",
+        "3,500",
+        "After the Mountain Troll and the Eye of Cthulhu",
         "Second boss. Gear: Holly/Vine/Phoenix Feather Wand."
       ],
       [
         "3",
         "Basilisk",
-        "4,500 HP",
-        "Post-Quirrell + Post-Skeletron",
+        "4,500",
+        "After Professor Quirrell and Skeletron. The last pre-Hardmode boss",
         "Unlocks Sword of Gryffindor. Final Pre-HM boss."
       ],
       [
         "4",
         "Aragog",
-        "8,000 HP",
-        "Early Hardmode",
+        "8,000",
+        "Any time in Hardmode",
         "Giant spider. Spider Silk materials."
       ],
       [
         "5",
         "Fluffy",
-        "18,000 HP",
-        "Post-Mech Bosses",
+        "18,000",
+        "After any Mechanical Boss",
         "Three-headed dog. Music is its thematic weakness."
       ],
       [
         "6",
         "Hungarian Horntail",
-        "28,000 HP",
-        "Mid Hardmode",
+        "28,000",
+        "After any Mechanical Boss",
         "Dragon. Unlocks Dragon Scale armor."
       ],
       [
         "7",
-        "Fenrir Greyback",
-        "25,000 HP",
-        "Blood Moon",
-        "Werewolf boss. Night-only."
-      ],
-      [
-        "8",
         "Dolores Umbridge",
-        "20,000 HP",
-        "Post-Mech Bosses",
+        "20,000",
+        "After the Hungarian Horntail and a Mechanical Boss",
         "The Debuff Boss. High defense, low damage."
       ],
       [
+        "8",
+        "Fenrir Greyback",
+        "25,000",
+        "After Dolores Umbridge, during a Blood Moon",
+        "Werewolf boss. Blood Moon only."
+      ],
+      [
         "9",
-        "Barty Crouch Jr",
-        "30,000 HP",
-        "Post-Plantera",
-        "Shapeshifter with 3 distinct phases."
+        "Bellatrix Lestrange",
+        "35,000",
+        "After Fenrir Greyback and Plantera",
+        "Aggressive duelist."
       ],
       [
         "10",
-        "Bellatrix Lestrange",
-        "35,000 HP",
-        "Post-Plantera",
-        "Aggressive duelist."
+        "Barty Crouch Jr",
+        "30,000",
+        "After Bellatrix Lestrange and Plantera",
+        "Shapeshifter with 3 distinct phases."
       ],
       [
         "11",
         "Dementor King",
-        "45,000 HP",
-        "Post-Golem",
+        "45,000",
+        "After Barty Crouch Jr and Golem, at night",
         "Penultimate boss. Patronus = +30% dmg bonus."
       ],
       [
         "12",
         "Lord Voldemort",
-        "60,000 HP",
-        "Post-Lunatic Cultist",
+        "60,000",
+        "After the Lunatic Cultist, at night",
         "True Final Boss. Weakened by Horcrux Hunt."
       ]
     ],
@@ -771,7 +855,7 @@
     ]
   },
   "enemies": {
-    "intro": "51 enemies populate the wizarding world. Enemies are grouped by biome/category. 21 of these are classified as Fantastic Beasts.",
+    "intro": "Fifty-one creatures roam the world, grouped below by where you will meet them; 21 are Fantastic Beasts. Stats are for Normal mode.",
     "headers": [
       "Enemy",
       "Dmg",
@@ -825,7 +909,7 @@
             "Spiny hedgehog. Rages when hurt. Fantastic Beast."
           ],
           [
-            "MagicPixie",
+            "Cornish Pixie",
             "18",
             "4",
             "50",
@@ -881,7 +965,7 @@
             "Colorful bird. Fantastic Beast."
           ],
           [
-            "DuelingDummy",
+            "Dueling Dummy",
             "0",
             "0",
             "999,999",
@@ -934,7 +1018,7 @@
             "Giant magical spider."
           ],
           [
-            "GoblinRebel",
+            "Goblin Rebel",
             "30",
             "12",
             "150",
@@ -973,7 +1057,7 @@
             "Serpentine flyer. Fantastic Beast."
           ],
           [
-            "PeruvianVipertooth",
+            "Peruvian Vipertooth",
             "55",
             "18",
             "350",
@@ -1030,7 +1114,7 @@
             "Swamp creature. Fantastic Beast."
           ],
           [
-            "BlastEndedSkrewt",
+            "Blast-Ended Skrewt",
             "55",
             "28",
             "450",
@@ -1062,7 +1146,7 @@
         ],
         "rows": [
           [
-            "CursedMummy",
+            "Cursed Mummy",
             "45",
             "18",
             "300",
@@ -1087,7 +1171,7 @@
         ],
         "rows": [
           [
-            "SnowWraith",
+            "Snow Wraith",
             "40",
             "14",
             "220",
@@ -1130,7 +1214,7 @@
         ],
         "rows": [
           [
-            "CursedSpecter",
+            "Cursed Specter",
             "60",
             "18",
             "450",
@@ -1173,14 +1257,14 @@
             "Fire snake. Drops Ashwinder Egg."
           ],
           [
-            "MagicalImp",
+            "Magical Imp",
             "25",
             "6",
             "70",
             "Shoots fire balls."
           ],
           [
-            "FireCrab",
+            "Fire Crab",
             "45",
             "22",
             "280",
@@ -1205,7 +1289,7 @@
             "Azkaban's guards. Blood Moon / Invasions / Forbidden Forest / Azkaban event."
           ],
           [
-            "DeathEater",
+            "Death Eater",
             "60",
             "25",
             "500",
@@ -1240,7 +1324,7 @@
             "Dark parasitic force (not a beast). Rare."
           ],
           [
-            "AzkabanGuard",
+            "Azkaban Guard",
             "75",
             "30",
             "800",
@@ -1280,7 +1364,155 @@
           ]
         ]
       }
-    }
+    },
+    "objects_intro": "Another 27 targets are not creatures but objectives: ward nodes, seals, relics, portraits and nests that appear during events and missions. Destroy (or collect) them to complete the task.",
+    "objects_headers": [
+      "Target",
+      "HP",
+      "Where you meet it"
+    ],
+    "objects_col_widths": [
+      44,
+      12,
+      134
+    ],
+    "objects": [
+      [
+        "Bludger",
+        "500",
+        "Quidditch matches. Chases players and knocks them back; it never kills."
+      ],
+      [
+        "Quidditch Hoop",
+        "1",
+        "Quidditch matches: score by hitting it with the Quaffle."
+      ],
+      [
+        "Castle Ward Node",
+        "300",
+        "Battle of Hogwarts, phase 1: defend it."
+      ],
+      [
+        "Breach Seal",
+        "250",
+        "Battle of Hogwarts, phase 2: break it."
+      ],
+      [
+        "Ward Anchor",
+        "250",
+        "Castle ward defense: destroy it to stabilize the wards."
+      ],
+      [
+        "Despair Anchor",
+        "500",
+        "Azkaban's Despair: each one destroyed lowers the event's intensity."
+      ],
+      [
+        "Prison Wraith",
+        "250",
+        "Azkaban's Despair: weaker than Dementors, but comes in groups."
+      ],
+      [
+        "Brood Marker",
+        "300",
+        "Acromantula nests: spawns spiders until destroyed."
+      ],
+      [
+        "Corrupted Trace",
+        "200",
+        "Unicorn Glade (Forbidden Forest): cleanse the dark taint."
+      ],
+      [
+        "Omen Stone",
+        "280",
+        "Centaur Skywatch: stabilize it by destroying it."
+      ],
+      [
+        "Thestral Beacon",
+        "1",
+        "Thestral Clearing: collect by walking up to it."
+      ],
+      [
+        "Doxy Nest",
+        "200",
+        "Grimmauld Place: spawns Doxy swarms until destroyed."
+      ],
+      [
+        "Grimmauld Boggart",
+        "350",
+        "Grimmauld Place. Riddikulus deals five times the damage."
+      ],
+      [
+        "Walburga's Portrait",
+        "300",
+        "Grimmauld Place: shrieks and jinxes everyone nearby."
+      ],
+      [
+        "Cursed Opal Necklace",
+        "200",
+        "Borgin and Burkes (Knockturn Alley): contain the curse."
+      ],
+      [
+        "Vanishing Cabinet Echo",
+        "350",
+        "Knockturn Alley: seal it before it opens a breach."
+      ],
+      [
+        "Cursed Treasure",
+        "200",
+        "Gringotts vaults: an anti-theft trap that hurts when you get close."
+      ],
+      [
+        "Vault Relic",
+        "1",
+        "Gringotts vault missions: collect it."
+      ],
+      [
+        "Prophecy Orb",
+        "1",
+        "Department of Mysteries missions: collect it."
+      ],
+      [
+        "Unstable Hourglass",
+        "1",
+        "Time Chamber missions: collect it."
+      ],
+      [
+        "Veil Fracture",
+        "300",
+        "Death Chamber missions: seal the breach near the Veil."
+      ],
+      [
+        "Moon Ward Fracture",
+        "300",
+        "Shrieking Shack: jinxes and spreads despair."
+      ],
+      [
+        "Whomping Willow Knot",
+        "200",
+        "Whomping Willow passage: knocks you back."
+      ],
+      [
+        "Tunnel Ward",
+        "250",
+        "Whomping Willow tunnel: causes Darkness and Slow."
+      ],
+      [
+        "Cauldron Spill Node",
+        "220",
+        "St Mungo's triage: potion accidents."
+      ],
+      [
+        "Hex Residue Node",
+        "250",
+        "St Mungo's triage: spell damage."
+      ],
+      [
+        "Venom Wound Node",
+        "280",
+        "St Mungo's triage: creature injuries."
+      ]
+    ]
   },
   "canon_disclosure": {
     "intro": "The Wizarding World mod draws heavily from the Harry Potter series. Most content is faithful to the source material, but some mechanics are adapted or original for gameplay reasons.",
@@ -1320,6 +1552,994 @@
           "Infernal Phoenix Wand (upgrade of Phoenix Feather Wand)"
         ]
       }
+    ]
+  },
+  "armor": {
+    "intro": "Eight armor sets span the game. The four Hogwarts house sets are available before Hardmode; Dark Wizard, Dragon Scale and Wizengamot come later. Wizard Robes are vanity only.",
+    "headers": [
+      "Set",
+      "Stage",
+      "Defense (H/B/L)",
+      "Total",
+      "Set bonus",
+      "Piece notes"
+    ],
+    "col_widths": [
+      24,
+      20,
+      22,
+      12,
+      58,
+      50
+    ],
+    "rows": [
+      [
+        "Wizard Robes",
+        "Vanity",
+        "0 / 0 / 0",
+        "0",
+        "Vanity only. Classic wizard hat, robes, and boots.",
+        "N/A"
+      ],
+      [
+        "Gryffindor",
+        "Pre-HM",
+        "5 / 7 / 6",
+        "18",
+        "+15% all damage, +10% melee speed",
+        "Hood: +8% spell dmg. Robes: +20 max HP"
+      ],
+      [
+        "Slytherin",
+        "Pre-HM",
+        "4 / 6 / 5",
+        "15",
+        "+12% crit chance, 5% life steal on crits",
+        "Poison-themed bonuses"
+      ],
+      [
+        "Ravenclaw",
+        "Pre-HM",
+        "3 / 5 / 4",
+        "12",
+        "+20% spell damage, +40 max mana, mana regen +5",
+        "Hood: mana regen. Robes: -10% mana cost"
+      ],
+      [
+        "Hufflepuff",
+        "Pre-HM",
+        "7 / 9 / 7",
+        "23",
+        "+8 defense, +4 life regen, thorns",
+        "Robes: +40 max HP. Tankiest house set"
+      ],
+      [
+        "Dark Wizard",
+        "Hardmode",
+        "8 / 10 / 8",
+        "26",
+        "+25% spell dmg, +15% crit, life steal on spell hits",
+        "Hood: +15% mana regen. Robes: -15% mana cost"
+      ],
+      [
+        "Dragon Scale",
+        "Post-Horntail",
+        "12 / 16 / 12",
+        "40",
+        "Fire Shield: fire immunity + fire nova when hit",
+        "Chest: +40 max HP. Legs: +5 mana regen"
+      ],
+      [
+        "Wizengamot",
+        "Post-Moon Lord",
+        "16 / 20 / 16",
+        "52",
+        "Arcane Authority: +30% spell dmg, -20% mana cost, +8 mana regen, arcane aura",
+        "Hood: highest def. Robes: +60 max HP"
+      ]
+    ]
+  },
+  "house_weapons": {
+    "intro": "Each Hogwarts house has a signature weapon that suits its armor set and play style.",
+    "headers": [
+      "Weapon",
+      "House",
+      "Type",
+      "Dmg",
+      "Use",
+      "KB",
+      "Special effect"
+    ],
+    "col_widths": [
+      32,
+      22,
+      22,
+      10,
+      10,
+      10,
+      84
+    ],
+    "rows": [
+      [
+        "Sword of Gryffindor",
+        "Gryffindor",
+        "Melee Sword",
+        "55",
+        "18",
+        "6",
+        "Legendary goblin-made sword. Drops from Basilisk. Bonus damage on hit effects."
+      ],
+      [
+        "Hufflepuff's Mace",
+        "Hufflepuff",
+        "Melee Mace",
+        "58",
+        "28",
+        "10",
+        "Heavy smash. Heals on hit (10% dmg dealt, max 8 HP). Tank sustain weapon."
+      ],
+      [
+        "Ravenclaw's Staff",
+        "Ravenclaw",
+        "Magic Staff",
+        "50",
+        "18",
+        "3",
+        "Reduces mana cost while held. Hits restore mana. 5 mana cost. Wisdom conserves energy."
+      ],
+      [
+        "Slytherin's Dagger",
+        "Slytherin",
+        "Melee Dagger",
+        "42",
+        "10",
+        "2",
+        "Very fast attacks. +50% damage when hitting from behind. Backstab assassin weapon."
+      ]
+    ]
+  },
+  "accessories": {
+    "intro": "Sixty-four accessories, from the Deathly Hallows and Horcruxes to rewards for the mod's events and missions. Rarity is the item's in-game rarity color.",
+    "headers": [
+      "Accessory",
+      "Rarity",
+      "Effect"
+    ],
+    "col_widths": [
+      40,
+      17,
+      133
+    ],
+    "groups": [
+      {
+        "name": "Deathly Hallows",
+        "rows": [
+          [
+            "Invisibility Cloak",
+            "Red",
+            "The unique Hallow cloak. Invisibility, -400 aggro, +5% damage."
+          ],
+          [
+            "Resurrection Stone",
+            "Red",
+            "+40 max HP, life regen. Awakened from Gaunt's Ring."
+          ],
+          [
+            "Elder Wand",
+            "Red",
+            "A weapon, listed here because it completes the set: 150-damage Avada Kedavra. See Wands."
+          ]
+        ]
+      },
+      {
+        "name": "Horcruxes",
+        "rows": [
+          [
+            "Riddle's Diary",
+            "Lt Purple",
+            "+spell damage, but slowly drains 1 HP every 2 seconds."
+          ],
+          [
+            "Slytherin's Locket",
+            "Lt Purple",
+            "Poison immunity, +8% damage reduction, reduced speed."
+          ],
+          [
+            "Hufflepuff's Cup",
+            "Lt Purple",
+            "+60 max HP, life regen, potion effectiveness."
+          ],
+          [
+            "Diadem of Ravenclaw",
+            "Lt Purple",
+            "Massive mana boost, +spell power, -40 max HP."
+          ]
+        ]
+      },
+      {
+        "name": "Combat",
+        "rows": [
+          [
+            "Dark Lord's Bane",
+            "Endgame",
+            "+15% all dmg, +10% spell, +10 def, +4 regen, poison/venom/fire immune"
+          ],
+          [
+            "Dementor's Embrace",
+            "Endgame",
+            "+15% all dmg, 5% life steal, but -30 max HP + Darkness. Enemies -3 def."
+          ],
+          [
+            "Master Wizard Banner",
+            "Purple",
+            "+10% all dmg, +5% spell, +8 def, +20 max mana, +2 life regen"
+          ],
+          [
+            "Champion's Medallion",
+            "Yellow",
+            "+15% all dmg, +10% crit, +8 def, +40 mana, +4 life regen"
+          ],
+          [
+            "Beast Hunter's Charm",
+            "Yellow",
+            "+12% dmg to enemies, +15% crit vs bosses"
+          ],
+          [
+            "Philosopher's Stone",
+            "Endgame",
+            "+10% all dmg, +8 life regen, extra gold drops, reduced potion cooldown"
+          ],
+          [
+            "Dragon Tooth Necklace",
+            "Lt Purple",
+            "+12% all dmg, +8 armor pen, fire trail while moving"
+          ],
+          [
+            "Dragon Scale Ring",
+            "Mid",
+            "Fire immunity, +8% spell dmg, +5% all dmg"
+          ],
+          [
+            "Venom Silk Wraps",
+            "Lt Purple",
+            "+10% spell dmg, all attacks inflict venom, +15% crit"
+          ],
+          [
+            "Quill of Acceptance",
+            "Lt Purple",
+            "+8% spell dmg, +5% crit, spells +5 armor pen"
+          ],
+          [
+            "Prongs Charm",
+            "Mid",
+            "+10% spell dmg, +5% crit, Patronus Guardian +25% dmg"
+          ],
+          [
+            "Wand Holster",
+            "Mid",
+            "+5% spell dmg, -5% mana cost"
+          ],
+          [
+            "Patronus Charm",
+            "Mid",
+            "Summon weapon (65 dmg). +10 def, +2 regen. 2x vs Dementors. 2 minion slots."
+          ],
+          [
+            "Gaunt's Ring",
+            "Lt Purple",
+            "100% drop from Voldemort. Cursed Horcrux shell hiding the Resurrection Stone."
+          ],
+          [
+            "Triwizard Cup",
+            "Yellow",
+            "+12% all dmg, +8% crit, +6 def, +4 life regen. The tournament's grand prize; not craftable. Shown in game as Champions Trophy."
+          ]
+        ]
+      },
+      {
+        "name": "Defense",
+        "rows": [
+          [
+            "Keeper Gloves",
+            "Orange",
+            "+8 def, +10% KB resist, thorns (20% contact dmg reflected)"
+          ],
+          [
+            "Shield Hat",
+            "Mid",
+            "15% chance to negate incoming damage completely"
+          ],
+          [
+            "Cerberus Fang Necklace",
+            "Pink",
+            "+5 def, +3 max minions"
+          ],
+          [
+            "Prefect Badge",
+            "Lt Red",
+            "+5 def, +5% spell dmg, nearby town NPCs deal more dmg"
+          ],
+          [
+            "Werewolf Cloak",
+            "Mid",
+            "Night: +20% melee, +15% speed, +10 def. Day: +5% dmg, +5% speed"
+          ],
+          [
+            "Azkaban Warden's Key",
+            "Yellow",
+            "Dementor resistance, +8 def, immune to Dark Curse, prison ward aura."
+          ],
+          [
+            "Defender's Signet",
+            "Lt Purple",
+            "+6 def, +5% damage reduction, immune to Jinxed and Confused, slightly faster. Castle ward defense reward."
+          ],
+          [
+            "Protector's Badge",
+            "Lt Purple",
+            "+8 def, +6% damage reduction, immune to Jinxed and Dark Curse, +4 life regen, eases despair. Battle of Hogwarts reward."
+          ],
+          [
+            "Order Signet",
+            "Lt Purple",
+            "+5 def, -200 aggro, immune to Jinxed and Confused, +4% damage reduction."
+          ],
+          [
+            "Moonward Pendant",
+            "Lt Purple",
+            "+5 def, +4% damage reduction, immune to Darkness and Jinxed, faster at night. Shrieking Shack reward."
+          ],
+          [
+            "Forest Warden's Badge",
+            "Orange",
+            "+6 def, +5% damage reduction, danger sense, night vision in the forest. Forest expedition reward."
+          ]
+        ]
+      },
+      {
+        "name": "Support and resistance",
+        "rows": [
+          [
+            "Healer's Satchel",
+            "Lt Red",
+            "+6 life regen, +5% damage reduction, immune to Venom and Confused, shorter potion cooldown, eases despair. St Mungo's reward."
+          ],
+          [
+            "Order of the Phoenix Badge",
+            "Lt Purple",
+            "+8% spell dmg, +5 def, shorter Dark Curse, despair resistance. Earned through Ministry missions."
+          ],
+          [
+            "Patronus Focus",
+            "Yellow",
+            "Longer Patronus duration and stronger despair resistance. Crafted from Soul Ash and Azkaban materials."
+          ]
+        ]
+      },
+      {
+        "name": "Utility and exploration",
+        "rows": [
+          [
+            "Marauder's Map",
+            "Orange",
+            "Reveals all enemies and NPCs on minimap"
+          ],
+          [
+            "Remembrall",
+            "Blue",
+            "Glows red near enemies. Danger sense + spelunker effect"
+          ],
+          [
+            "Sneakoscope",
+            "Orange",
+            "Danger sense, hunter, +def when enemies within 400px"
+          ],
+          [
+            "Foe Glass",
+            "Lt Red",
+            "Reveals all enemies on minimap + boss HP % in tooltip"
+          ],
+          [
+            "Pensieve",
+            "Lt Purple",
+            "Full minimap reveal (GPS), enemy detection, night vision"
+          ],
+          [
+            "Moody's Eye",
+            "Lt Purple",
+            "Advanced detection and awareness"
+          ],
+          [
+            "Extendable Ears",
+            "Green",
+            "Wider enemy detection, Hunter effect, +50 aggro"
+          ],
+          [
+            "Deluminator",
+            "Lt Purple",
+            "Permanent Shine buff (glow) + Night Owl vision"
+          ],
+          [
+            "Spectrespecs",
+            "Orange",
+            "Luna Lovegood's glasses. Visual enhancement."
+          ],
+          [
+            "Boss Compass",
+            "Mid",
+            "Boss progression status in tooltip, +3% damage"
+          ],
+          [
+            "Enchanted Mirror",
+            "Orange",
+            "+3% spell damage, mirror utility"
+          ],
+          [
+            "Sorting Hat",
+            "Orange",
+            "Boosts set bonus of any Hogwarts house armor currently worn"
+          ],
+          [
+            "Goblin Ledger",
+            "Orange",
+            "+luck, coin attraction, +5% all dmg, treasure sense. An enchanted Gringotts ledger."
+          ],
+          [
+            "Hand of Glory",
+            "Lt Purple",
+            "Night vision, spelunker sense and lower aggro. In darkness: +6% dmg and +4 def."
+          ]
+        ]
+      },
+      {
+        "name": "Mobility and stealth",
+        "rows": [
+          [
+            "Apparition Charm",
+            "Yellow",
+            "Teleport to cursor (Rod of Discord-like)"
+          ],
+          [
+            "Time Turner",
+            "Lt Purple",
+            "Dodge (once per 10s) + 10% movement speed"
+          ],
+          [
+            "Camouflage Cloak",
+            "Lt Red",
+            "-400 aggro, +10% speed, invisibility when still for 2s"
+          ],
+          [
+            "Spider Silk Cloak",
+            "Lt Red",
+            "-300 aggro, +10% speed, +8% spell dmg"
+          ],
+          [
+            "Padfoot Amulet",
+            "Lt Purple",
+            "Stealth: -200 aggro, enemies less likely to target you"
+          ],
+          [
+            "Dirigible Plum Earring",
+            "Mid",
+            "Luna's earring. Quirky mobility accessory."
+          ],
+          [
+            "Fairy Wings",
+            "Pink",
+            "Mid-game wing accessory. Flight."
+          ],
+          [
+            "Merfolk Amulet",
+            "Mid",
+            "Gills + flipper + 10% dmg while submerged"
+          ],
+          [
+            "Demiguise Weave Cloak",
+            "Lt Purple",
+            "Ordinary stealth cloak from Demiguise Hair. Invisibility, aggro reduction, +5% speed."
+          ]
+        ]
+      },
+      {
+        "name": "Summoning",
+        "rows": [
+          [
+            "Unbreakable Vow",
+            "Lt Purple",
+            "+25% summon dmg, +1 max minion, but +15% dmg taken"
+          ]
+        ]
+      },
+      {
+        "name": "Vanity",
+        "rows": [
+          [
+            "Lightning Scar",
+            "Orange",
+            "Harry's forehead scar. Face slot vanity."
+          ],
+          [
+            "Wizard Spectacles",
+            "Blue",
+            "Round glasses. Face slot vanity."
+          ],
+          [
+            "Wizard Beard",
+            "Blue",
+            "Classic wizard beard. Face slot vanity."
+          ],
+          [
+            "Wizard Pocket Watch",
+            "Blue",
+            "Time-keeping accessory."
+          ],
+          [
+            "Basilisk Fang",
+            "Orange",
+            "Crafting material + accessory. Venom immunity + poison attacks."
+          ]
+        ]
+      }
+    ]
+  },
+  "mounts": {
+    "intro": "All five mounts fly, with unlimited flight time. They are listed from slowest to fastest.",
+    "headers": [
+      "Mount",
+      "Run speed",
+      "Jump",
+      "Accel",
+      "Notes"
+    ],
+    "col_widths": [
+      30,
+      20,
+      14,
+      16,
+      110
+    ],
+    "rows": [
+      [
+        "Nimbus 2000",
+        "14",
+        "10",
+        "0.25",
+        "Starter broomstick. Solid speed."
+      ],
+      [
+        "Thestral",
+        "15",
+        "10",
+        "0.28",
+        "Moderate speed. Between Nimbus and Firebolt."
+      ],
+      [
+        "Hippogriff",
+        "16",
+        "12",
+        "0.30",
+        "Must bow before riding. Earned from Hagrid."
+      ],
+      [
+        "Firebolt",
+        "18",
+        "12",
+        "0.35",
+        "Upgraded broomstick. Faster than Nimbus 2000."
+      ],
+      [
+        "Nimbus 2001",
+        "22",
+        "15",
+        "0.40",
+        "Post-Moon Lord. Fastest broomstick. 'Malfoy money buys speed.'"
+      ]
+    ]
+  },
+  "pets": {
+    "intro": "Six pets, one of them (Hedwig) a light pet.",
+    "headers": [
+      "Pet",
+      "Type",
+      "Summoned with",
+      "Notes"
+    ],
+    "col_widths": [
+      30,
+      20,
+      36,
+      104
+    ],
+    "rows": [
+      [
+        "Hedwig",
+        "Light Pet",
+        "Owl Treat",
+        "Snowy owl. Provides light."
+      ],
+      [
+        "Niffler",
+        "Pet",
+        "Niffler Pouch",
+        "Coin-hunting pet. Seeks treasure."
+      ],
+      [
+        "Golden Snitch",
+        "Pet",
+        "Golden Snitch item",
+        "Zooms around erratically."
+      ],
+      [
+        "Kneazle",
+        "Pet",
+        "Cat Treats",
+        "Magical cat. Grants enemy detection."
+      ],
+      [
+        "Baby Dragon",
+        "Pet",
+        "Dragon Egg",
+        "Miniature dragon companion."
+      ],
+      [
+        "Pygmy Puff",
+        "Pet",
+        "Pygmy Puff item",
+        "Miniature Puffskein. Weasleys' best-seller."
+      ]
+    ]
+  },
+  "minions": {
+    "intro": "Three summon weapons call allies to fight beside you.",
+    "headers": [
+      "Item",
+      "Type",
+      "Dmg",
+      "Notes"
+    ],
+    "col_widths": [
+      36,
+      18,
+      16,
+      120
+    ],
+    "rows": [
+      [
+        "Patronus Charm",
+        "Summon",
+        "65",
+        "Summons Patronus guardian. +10 def, +2 regen. 2x vs Dementors. 2 minion slots."
+      ],
+      [
+        "House Elf Bell",
+        "Summon",
+        "Varies",
+        "Summons house-elf minion."
+      ],
+      [
+        "Phoenix Feather Staff",
+        "Summon",
+        "Varies",
+        "Summons phoenix minion."
+      ]
+    ]
+  },
+  "potions": {
+    "intro": "Nineteen potions, brewed at the Enchanting Table from magical ingredients.",
+    "headers": [
+      "Potion",
+      "Duration",
+      "Effect"
+    ],
+    "col_widths": [
+      38,
+      18,
+      134
+    ],
+    "rows": [
+      [
+        "Butterbeer",
+        "10 min",
+        "Comfort buff. Well Fed equivalent + social buff."
+      ],
+      [
+        "Felix Felicis",
+        "4 min",
+        "Liquid Luck. Major luck boost. Expensive but powerful."
+      ],
+      [
+        "Polyjuice Potion",
+        "5 min",
+        "Disguise/stealth. Reduced enemy aggro."
+      ],
+      [
+        "Wolfsbane Potion",
+        "8 min",
+        "Werewolf power boost. Stronger at night."
+      ],
+      [
+        "Veritaserum",
+        "5 min",
+        "Reveals hidden enemies, traps, and treasure."
+      ],
+      [
+        "Gillyweed",
+        "6 min",
+        "Gills + flipper + water immunity. Deep diving."
+      ],
+      [
+        "Amortentia",
+        "6 min",
+        "Love potion. Reduced aggro + passive regen."
+      ],
+      [
+        "Pepperup Potion",
+        "4 min",
+        "Energy boost. Speed and stat buffs."
+      ],
+      [
+        "Skele-Gro",
+        "3 min",
+        "Bone regrowth. Defense and regen boost."
+      ],
+      [
+        "Firewhiskey",
+        "4 min",
+        "+12% all damage, +8% crit."
+      ],
+      [
+        "Fenrir's Wolfsbane",
+        "6 min",
+        "Enhanced wolfsbane. Stronger werewolf power."
+      ],
+      [
+        "Shield Charm Potion",
+        "5 min",
+        "+10 defense, +8% damage reduction."
+      ],
+      [
+        "Seeker's Reflexes",
+        "4 min",
+        "Enhanced reflexes. Dodge and speed boost."
+      ],
+      [
+        "Stealth Draught",
+        "4 min",
+        "Invisibility/stealth enhancement."
+      ],
+      [
+        "Memory Potion",
+        "4 min",
+        "Spelunker, Hunter, Night Owl and Danger Sense at once: treasure, enemies and traps light up."
+      ],
+      [
+        "Draconis Elixir",
+        "4 min",
+        "Dragon blood: +15% all dmg, fire immunity, inferno aura."
+      ],
+      [
+        "Aqua Fortis",
+        "4 min",
+        "Gills + water immunity. Underwater: +20% dmg, +8 def, +20% speed."
+      ],
+      [
+        "Resurrection Potion",
+        "10 min",
+        "One-time death prevention. If you die, heal to 50% HP instead."
+      ],
+      [
+        "Mandrake Restorative",
+        "Instant",
+        "Cures petrification and all debilitating debuffs."
+      ]
+    ]
+  },
+  "foods": {
+    "headers": [
+      "Item",
+      "Effect"
+    ],
+    "col_widths": [
+      40,
+      150
+    ],
+    "rows": [
+      [
+        "Chocolate Frog",
+        "Healing consumable. Random wizard card collectible."
+      ],
+      [
+        "Chocolate Cauldron",
+        "Sweet treat. Minor buff."
+      ],
+      [
+        "Bertie Bott's Beans",
+        "Random effect: could be good or bad!"
+      ],
+      [
+        "Peppermint Toad",
+        "Healing sweet."
+      ],
+      [
+        "Nosebleed Nougat",
+        "Weasley prank. Causes bleeding (gag item)."
+      ],
+      [
+        "Puking Pastille",
+        "Weasley prank. Causes nausea (gag item)."
+      ],
+      [
+        "Skiving Snackbox",
+        "Weasley product. Escape item."
+      ]
+    ]
+  },
+  "utility_items": {
+    "headers": [
+      "Item",
+      "Effect"
+    ],
+    "col_widths": [
+      40,
+      150
+    ],
+    "rows": [
+      [
+        "Hogwarts Letter",
+        "Starter item. Grants Oak Wand + Enchanting Table recipe."
+      ],
+      [
+        "Floo Powder",
+        "Teleport to a random NPC / home point."
+      ],
+      [
+        "Portkey",
+        "Teleport utility item."
+      ],
+      [
+        "Dark Mark",
+        "Triggers Death Eater Invasion event."
+      ],
+      [
+        "Spell Book",
+        "Spell reference / lore item."
+      ],
+      [
+        "Dark Arts Tome",
+        "Dark magic reference."
+      ],
+      [
+        "Daily Prophet",
+        "Check daily challenge status."
+      ],
+      [
+        "Wizard's Almanac",
+        "Wizard reference guide."
+      ],
+      [
+        "Wizard Chess Set",
+        "Entertainment / NPC happiness item."
+      ],
+      [
+        "Dueling Dummy Item",
+        "Places a Dueling Dummy for DPS testing."
+      ]
+    ]
+  },
+  "crafting_materials": {
+    "intro": "Twenty materials make up the mod's crafting backbone. Most drop from creatures and bosses; Essence of Magic, which every magical creature drops, goes into nearly every recipe.",
+    "headers": [
+      "Material",
+      "Source",
+      "Used for"
+    ],
+    "col_widths": [
+      36,
+      52,
+      102
+    ],
+    "rows": [
+      [
+        "Essence of Magic",
+        "All magical enemies, bosses, challenges",
+        "Universal crafting material. Used in nearly every recipe."
+      ],
+      [
+        "Phoenix Ash",
+        "Rare drop from fire enemies",
+        "Endgame crafting, resurrection items."
+      ],
+      [
+        "Phoenix Tear",
+        "Rare drop, quest reward",
+        "Healing items, powerful potions."
+      ],
+      [
+        "Dragon Scale",
+        "Horntail boss, dragon enemies",
+        "Dragon Scale armor set, accessories."
+      ],
+      [
+        "Unicorn Blood",
+        "Forbidden Forest exclusive drop",
+        "Powerful potions and accessories."
+      ],
+      [
+        "Demiguise Hair",
+        "Demiguise (Forbidden Forest)",
+        "Ordinary stealth cloaks, concealment items."
+      ],
+      [
+        "Spider Silk Weave",
+        "Acromantula, Aragog",
+        "Spider Silk Cloak, web-themed items."
+      ],
+      [
+        "Ashwinder Egg",
+        "Ashwinder drops",
+        "Fire potions, incendiary items."
+      ],
+      [
+        "Werewolf Pelt",
+        "Werewolf / Fenrir drops",
+        "Werewolf Cloak, lycanthropic items."
+      ],
+      [
+        "Cerberus Fang",
+        "Fluffy boss",
+        "Cerberus Fang Necklace, beast accessories."
+      ],
+      [
+        "Merfolk Scale",
+        "Merfolk / ocean fishing",
+        "Merfolk Amulet, aquatic items."
+      ],
+      [
+        "Grindylow Tooth",
+        "Grindylow drops",
+        "Aquatic accessories."
+      ],
+      [
+        "Bowtruckle Catch",
+        "Bowtruckle (surface)",
+        "Nature-themed crafting."
+      ],
+      [
+        "Jobberknoll Feather",
+        "Jobberknoll (sky)",
+        "Memory Potion, feather items."
+      ],
+      [
+        "Imp Flame",
+        "Magical Imp (underworld)",
+        "Fire-themed crafting."
+      ],
+      [
+        "Dugbog Hide",
+        "Dugbog (jungle)",
+        "Leather armor upgrades."
+      ],
+      [
+        "Enchanted Tadpole",
+        "Forbidden Forest fishing",
+        "Bait + Essence ingredient."
+      ],
+      [
+        "Magical Koi",
+        "Any water fishing (rare)",
+        "Potion ingredient."
+      ],
+      [
+        "Dementor's Shroud",
+        "Dementor King; Lethifold (1 in 5)",
+        "Wizengamot armor, Dementor's Embrace, Patronus Focus, Azkaban ward items."
+      ],
+      [
+        "Golden Egg",
+        "Hungarian Horntail; Sphinx (1 in 10)",
+        "Time Turner, Philosopher's Stone, Champion's Medallion, Baby Dragon pet and more."
+      ]
     ]
   }
 }

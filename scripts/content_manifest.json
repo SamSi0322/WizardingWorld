@@ -5,9 +5,9 @@
     "note": "Curated narrative content (boss descriptions, spell flavor text, etc.) is maintained separately in scripts/guide_narrative.json."
   },
   "file_counts": {
-    "cs_source_files": 593,
-    "png_sprites": 606,
-    "total_files": 1509
+    "cs_source_files": 597,
+    "png_sprites": 624,
+    "total_files": 1546
   },
   "wands": {
     "all_files": [
@@ -284,7 +284,6 @@
       "Spectrespecs",
       "SpiderSilkCloak",
       "TimeTurner",
-      "TriwizardCup",
       "UnbreakableVow",
       "VenomSilkWraps",
       "WandHolster",
@@ -293,7 +292,10 @@
       "WizardPocketWatch",
       "WizardSpectacles"
     ],
-    "count": 65
+    "count": 64,
+    "obsolete_stubs": [
+      "TriwizardCup"
+    ]
   },
   "armor": {
     "sets": [
@@ -727,10 +729,14 @@
       "WizardRecipes",
       "WizardSoundStyles",
       "WizardTowerGen",
+      "WizardingBackgroundStyles",
+      "WizardingBossArtDrawSystem",
+      "WizardingBossAttackVisuals",
       "WizardingFilterSystem",
-      "WizardingSceneEffects"
+      "WizardingSceneEffects",
+      "WizardingSceneSkies"
     ],
-    "count": 56
+    "count": 60
   },
   "crafting_materials": {
     "list": [
@@ -758,9 +764,9 @@
     "count": 20
   },
   "summary": {
-    "cs_files": 593,
-    "png_sprites": 606,
-    "total_files": 1509,
+    "cs_files": 597,
+    "png_sprites": 624,
+    "total_files": 1546,
     "wands_active": 24,
     "wands_base_combat": 19,
     "wands_upgrades": 1,
@@ -769,14 +775,14 @@
     "bosses": 12,
     "enemies": 78,
     "town_npcs": 16,
-    "accessories": 65,
+    "accessories": 64,
     "armor_sets": 8,
     "armor_pieces": 24,
     "pets": 6,
     "mounts": 5,
     "potions": 19,
     "crafting_materials": 20,
-    "systems": 56,
+    "systems": 60,
     "other_weapons": 27
   }
 }

@@ -9,13 +9,13 @@
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![Status: fan project](https://img.shields.io/badge/status-unofficial%20fan%20project-orange.svg)](#license--ip-disclaimer)
 
-By **Xinyue (Lily) Feng** ([@lillly1](https://github.com/lillly1)) · [Project page](https://samsi0322.github.io/xinyue-feng/work/wizarding-world/) · [Player guide (EN)](WizardingWorld_Guide_EN.pdf) · [玩家指南 (中文)](WizardingWorld_Guide_ZH.pdf)
+By **Xinyue (Lily) Feng** · [Project page](https://samsi0322.github.io/xinyue-feng/work/wizarding-world/) · [Player guide (EN)](WizardingWorld_Guide_EN.pdf) · [玩家指南 (中文)](WizardingWorld_Guide_ZH.pdf)
 
 > **Disclaimer.** This is an **unofficial fan project**. Harry Potter, Hogwarts, the wizarding-world setting, and all related names, characters, places, and indicia are trademarks of Warner Bros. Entertainment Inc., J.K. Rowling, and other rights holders. This mod is **not affiliated with, endorsed by, or sponsored by** any rights holder. Non-commercial fan use only — see [License & IP disclaimer](#license--ip-disclaimer) at the bottom.
 
 > **Project status — release candidate.** The primary single-player progression route has been smoke-tested in tModLoader from early game through Voldemort and the Deathly Hallows ending. The mod is **not yet on Steam Workshop**; remaining release work is focused on wider balance, multiplayer sync, and packaging checks.
 
-A comprehensive Harry Potter Hogwarts experience mod for Terraria via tModLoader. **593 C# source files, 606 PNG sprites, 1,509 project files.** Canon-audited and redesigned with cleaner Hallows/Horcrux progression and stronger late-game consistency.
+A comprehensive Harry Potter Hogwarts experience mod for Terraria via tModLoader. **597 C# source files, 624 PNG sprites, 1,546 project files.** Canon-audited and redesigned with cleaner Hallows/Horcrux progression and stronger late-game consistency.
 
 **Core Identity:** You are a Hogwarts student experiencing memories from across wizarding history through a Pensieve, learning spells, mastering your wand, and facing the rising darkness.
 
@@ -31,7 +31,7 @@ A comprehensive Harry Potter Hogwarts experience mod for Terraria via tModLoader
 - **Quidditch Season** — Seeker ranks, multi-Snitch events, broom trials
 - **Hogsmeade Village** — worldgen town with Shrieking Shack
 - **Forbidden Forest** — 3-zone depth scaling with progressive danger
-- 78 enemies, 65 accessories, 8 armor sets, 5 mounts, 6 pets total, 19 potions
+- 78 enemies, 64 accessories, 8 armor sets, 5 mounts, 6 pets total, 19 potions
 - 3-language support (English, Chinese Simplified, Chinese Traditional)
 - Canon-audited: true Invisibility Cloak is unique, Gaunt's Ring awakens the Resurrection Stone, Demiguise gear is ordinary stealth gear
 
@@ -41,7 +41,7 @@ As of July 1, 2026, Wizarding World is treated as a **1.0.0 release candidate**.
 
 Completed content and packaging:
 
-- Core content is in place: 12 Wizarding World bosses, 24 active wands, 78 enemies, 65 accessories, 16 town NPCs, 8 armor sets, 5 mounts, 6 pets, 19 potions, and three-language localization.
+- Core content is in place: 12 Wizarding World bosses, 24 active wands, 78 enemies, 64 accessories, 16 town NPCs, 8 armor sets, 5 mounts, 6 pets, 19 potions, and three-language localization.
 - In-game PNG asset coverage is complete and tracked by `scripts/verify_assets.py`.
 - Custom spell, boss, enemy, and ambient audio has been generated, wired, and smoke-tested.
 - Release packaging is ready: public Release builds omit `/wwdebug`, `WizardDebugCommand`, and the QA-only test wand.
@@ -60,7 +60,7 @@ Current verification snapshot:
 
 - `python scripts/verify_assets.py` passes.
 - `python scripts/verify_guide.py --strict` passes with `665 passed, 0 failed, 0 warnings`.
-- `python scripts/scan_content.py --pretty` reports `593 C# files`, `606 PNGs`, and `1509 total` project files.
+- `python scripts/scan_content.py --pretty` reports `597 C# files`, `624 PNGs`, and `1546 total` project files.
 
 Remaining pre-public-release confidence work is limited to fresh-machine installs, longer balance runs, multiplayer sync checks, and native-speaker proofreading.
 
@@ -87,7 +87,7 @@ When you first use a Life Crystal or defeat a boss, an owl will deliver your **H
 
 ## Content Overview
 
-### Wands (23 + 1 upgrade)
+### Wands (24: 19 combat, 4 utility, 1 upgrade)
 | Tier | Wands | Spells |
 |------|-------|--------|
 | Pre-Boss | Oak, Alder, Willow | Stupefy, Expelliarmus |
@@ -135,7 +135,7 @@ Dementor, Acromantula, Cornish Pixie, Mountain Troll, Inferius, Thestral, Death 
 | **Centaur** | Defeat any boss | Detection/divination items |
 | **Dumbledore** | Defeat Dementor King | Hallows guidance, later endgame items |
 
-### Accessories (65; highlights)
+### Accessories (64; highlights)
 - **Deathly Hallows**: true Invisibility Cloak, Resurrection Stone, Elder Wand
 - **Stealth Gear**: Demiguise Weave Cloak, Camouflage Cloak, Stealth Draught
 - **Horcruxes**: Riddle's Diary, Slytherin's Locket, Hufflepuff's Cup, Diadem of Ravenclaw
@@ -198,8 +198,8 @@ The included in-game sprites are complete and release-checked. Asset coverage is
 
 ## Credits
 
-- **Project lead**: Xinyue (Lily) Feng ([@lillly1](https://github.com/lillly1))
-- **Mod Development**: Built with Claude Code (Anthropic)
+- **Developer**: Xinyue (Lily) Feng
+- **Tools**: code written with Claude Code (Anthropic); sprites generated with AI image generation from the prompts in `SPRITE_PROMPTS.md`
 - **Game**: Terraria by Re-Logic
 - **Modding Framework**: tModLoader
 - **Inspiration**: J.K. Rowling's Harry Potter series, Fantastic Beasts

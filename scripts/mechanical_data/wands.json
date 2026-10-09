@@ -217,6 +217,19 @@
     "isAccessory": false
   },
   {
+    "id": "QATestWand",
+    "_source": "QATestWand.cs",
+    "damage": 600,
+    "useTime": 8,
+    "mana": 0,
+    "knockBack": 8.0,
+    "crit": 100,
+    "rarity": "Purple",
+    "obsolete": false,
+    "hasRecipe": false,
+    "isAccessory": false
+  },
+  {
     "id": "RedOakWand",
     "_source": "RedOakWand.cs",
     "damage": 32,

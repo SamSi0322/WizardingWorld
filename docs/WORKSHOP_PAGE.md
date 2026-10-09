@@ -27,7 +27,7 @@ Begin as a Hogwarts student, receive your first wand, learn spells, follow a gui
 [list]
 [*]12 boss fights, from Mountain Troll to Lord Voldemort
 [*]24 active wands across 9 spell schools, with Wand Mastery progression
-[*]78 enemies, 65 accessories, 8 armor sets, 5 mounts, 6 pets, and 19 potions
+[*]78 enemies, 64 accessories, 8 armor sets, 5 mounts, 6 pets, and 19 potions
 [*]16 town NPCs with progression shops, dialogue, and quest handoffs
 [*]Horcrux Hunt, Deathly Hallows, Dark Arts Corruption, Azkaban Despair, Quidditch, Hogsmeade, Diagon Alley, and Forbidden Forest systems
 [*]Boss Compass and Wizard's Almanac items to guide the main route
