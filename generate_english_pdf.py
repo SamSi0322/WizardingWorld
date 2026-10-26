@@ -102,7 +102,7 @@ LABELS = {
                   + "{pets} pets" + DOT + "{town_npcs} town NPCs",
                   "English, Simplified Chinese and Traditional Chinese" + DOT + "tModLoader 1.4.4+"],
         "quote": "“After all this time?”  “Always.”",
-        "credit": "Created by Xinyue (Lily) Feng" + DOT + "github.com/SamSi0322/WizardingWorld",
+        "credit": "Created by Xinyue (Lily) Feng" + DOT + "github.com/lillly1/WizardingWorld",
         "legal": "An unofficial, non-commercial fan project. Harry Potter names and characters are trademarks of "
                  "Warner Bros. Entertainment Inc. and J.K. Rowling; Terraria is © Re-Logic. Not affiliated "
                  "with or endorsed by any of them.",
