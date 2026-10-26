@@ -9,7 +9,7 @@
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-512BD4.svg)](https://dotnet.microsoft.com/)
 [![Status: fan project](https://img.shields.io/badge/status-unofficial%20fan%20project-orange.svg)](#license--ip-disclaimer)
 
-By **Xinyue (Lily) Feng** · [Project page](https://lillly1.github.io/work/wizarding-world/) · [Player guide (EN)](WizardingWorld_Guide_EN.pdf) · [玩家指南 (中文)](WizardingWorld_Guide_ZH.pdf)
+By **Xinyue (Lily) Feng** · [Project page](https://lily-feng.com/work/wizarding-world/) · [Player guide (EN)](WizardingWorld_Guide_EN.pdf) · [玩家指南 (中文)](WizardingWorld_Guide_ZH.pdf)
 
 > **Disclaimer.** This is an **unofficial fan project**. Harry Potter, Hogwarts, the wizarding-world setting, and all related names, characters, places, and indicia are trademarks of Warner Bros. Entertainment Inc., J.K. Rowling, and other rights holders. This mod is **not affiliated with, endorsed by, or sponsored by** any rights holder. Non-commercial fan use only — see [License & IP disclaimer](#license--ip-disclaimer) at the bottom.
 
